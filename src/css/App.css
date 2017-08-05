@@ -1,0 +1,132 @@
+@keyframes selected-point-animation {
+  0% {
+    transform: scale(2);
+  }
+  50% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
+.scatter-chart-selected-point {
+  animation: selected-point-animation cubic-bezier(0.785, 0.135, 0.15, 0.86) 2000ms infinite;
+  fill:#5cb87c !important;
+}
+
+/* If not for a Firefox bug I could drop scatter-chart-point-scale-container
+   and just use the below.
+.scatter-chart-point {
+  transform-origin: center;
+  transition: transform 200ms;
+}
+*/
+
+.scatter-chart-point-scale-container {
+  transition: transform 200ms;
+}
+
+.scatter-chart-point-scale-container:hover {
+  transform: scale(2);
+}
+
+.scatter-chart-point-problem-1,
+.scatter-chart-point-problem-4 {
+  background:#5DBCD2;
+  fill:#5DBCD2;
+}
+
+.scatter-chart-point-problem-2,
+.scatter-chart-point-problem-5 {
+  background:#F88379;
+  fill:#F88379;
+}
+
+.scatter-chart-point-problem-3,
+.scatter-chart-point-problem-6 {
+  background:#EFBC56;
+  fill:#EFBC56;
+}
+
+.scatter-chart-container,
+.results-histogram-container {
+  display: inline;
+}
+
+.scatter-chart-svg {
+  margin: 20px;
+  width: 630px;
+  height: 420px;
+}
+
+.results-histogram-svg {
+  margin: 20px;
+  width: 490px;
+  height: 420px;
+}
+
+.results-histogram-bar {
+  transition: all 1s;
+  fill: #5cb87c;
+}
+
+.selector-panel-container {
+  border-spacing: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selector-panel-row-label,
+.selector-panel-column-heading,
+.selector-panel-spacer {
+  background: #d3d3d3;
+}
+
+.selector-panel-problem,
+.selector-panel-row-label,
+.selector-panel-column-heading,
+.selector-panel-spacer {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #edebe6;
+}
+
+.selector-panel-problem-selected {
+  background: #5cb87c !important;
+  transform: scale(0.7);
+  /* Unfortunately Mac OS Safari bugs rule out my preferred design:
+  transform: scale(1.2);
+  transition: transform 200ms; */
+}
+
+.selector-panel-problem:hover {
+  background: #d3d3d3;
+}
+
+.axis-root {
+  color: #636363;
+  fill: #636363;
+  stroke: #636363;
+}
+
+.axis-label {
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+}
+
+.axis-tick-label {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.problem-pdf-iframe {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 988px;
+  height: 2600px;
+}

@@ -1,0 +1,8 @@
+{
+  "short_name": "IMO Charts",
+  "name": "IMO Results visualisation",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
