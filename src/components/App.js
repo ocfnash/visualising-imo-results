@@ -7,7 +7,7 @@ import '../css/App.css';
 
 const stats = require('../stats.json');
 const years = Object.keys(stats).map(k => k.substring(0, 4)).reduce((p, c) => {
-  if (!p.includes(c)) p.push(c);
+  if (p.indexOf(c) === -1) p.push(c);
   return p;
 }, []);
 
