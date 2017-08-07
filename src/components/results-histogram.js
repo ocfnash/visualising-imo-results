@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import Xaxis from './x-axis.js';
 import Yaxis from './y-axis.js';

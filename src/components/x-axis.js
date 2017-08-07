@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 
 const tickLength = 5;

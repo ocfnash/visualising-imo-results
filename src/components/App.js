@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import ScatterChart from './scatter-chart.js';
 import ResultsHistogram from './results-histogram.js';
