@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import ScatterChart from './scatter-chart.js';
 import ResultsHistogram from './results-histogram.js';
 import SelectorPanel from './selector-panel.js';
+import ProblemDescription from './problem-description.js';
 import '../css/App.css';
 
+const problems = require('../problems.json');
 const stats = require('../stats.json');
 const years = Object.keys(stats).map(k => k.substring(0, 4)).reduce((p, c) => {
   if (p.indexOf(c) === -1) p.push(c);
@@ -18,9 +20,13 @@ class App extends Component {
     this.state = {
       selectedProblem: "1997-2",
     };
-  }
-  selectedYear() {
-    return this.state.selectedProblem.slice(0, 4);
+    if (window.MathJax !== undefined) {
+      window.MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+        }
+      });
+    }
   }
   selectProblemByKey(key) {
     this.setState({selectedProblem: key});
@@ -38,7 +44,9 @@ class App extends Component {
           years={years}
           cellClicked={this.selectProblemByKey}
           selectedProblem={this.state.selectedProblem} />
-        <iframe className="problem-pdf-iframe" title="ProblemSheet" src={`assets/${this.selectedYear()}-eng.pdf`} frameBorder="0"></iframe>
+        <ProblemDescription
+          problemId={this.state.selectedProblem}
+          problemDescription={problems[this.state.selectedProblem]} />
       </div>
     );
   }
