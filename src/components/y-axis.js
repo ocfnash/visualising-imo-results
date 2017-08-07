@@ -9,6 +9,10 @@ class Yaxis extends Component {
     const {y1, y2, label} = this.props;
     return (y2 + y1)/2 + label.length*4; // TODO Fix this hack,
   }
+  getTickXValue(tickX, tickValue) {
+    // Major hack alert below :)
+    return tickX - 15 - tickValue.toString().length*6;
+  }
   render() {
     const {ticks, x, y1, y2, label} = this.props;
     const elements = [
@@ -18,7 +22,7 @@ class Yaxis extends Component {
     ticks.forEach(
       tick => {
         elements.push(<line fill="none" x1={x-tickLength} y1={tick.Y} x2={x} y2={tick.Y} key={`y-axis-tick-${tick.Value}`} />);
-        elements.push(<text className="axis-tick-label" stroke="none" x={x-30} y={tick.Y+5} key={`y-axis-tick-label-${tick.Value}`}>{tick.Value.toString().padStart(3, '\xa0')}</text>);
+        elements.push(<text className="axis-tick-label" stroke="none" x={this.getTickXValue(x, tick.Value)} y={tick.Y+5} key={`y-axis-tick-label-${tick.Value}`}>{tick.Value}</text>);
       }
     );
     return (<g className="axis-root">{elements}</g>);
