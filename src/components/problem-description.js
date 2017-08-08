@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 class ProblemDescription extends Component {
   tryMathJax() {
-    if (window.MathJax !== undefined) {
-      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
+    if (window.MathJax !== undefined &&
+        this.mathParagraphs !== undefined &&
+        this.mathParagraphs !== null) {
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, this.mathParagraphs]);
     }
   }
   componentDidMount() {
@@ -35,7 +37,7 @@ class ProblemDescription extends Component {
             &nbsp;[<a href={`assets/${this.getProblemYear()}-eng.pdf`} target="_blank">pdf</a>]
           </span>
         </div>
-        <div className="problem-description>">
+        <div className="problem-description>" ref={mathParagraphs => this.mathParagraphs = mathParagraphs}>
           {this.renderParagraphs()}
         </div>
       </div>
