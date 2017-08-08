@@ -19,13 +19,6 @@ class App extends Component {
     this.state = {
       selectedProblem: "1997-2",
     };
-    if (window.MathJax !== undefined) {
-      window.MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-        }
-      });
-    }
   }
   selectProblemByKey(key) {
     this.setState({selectedProblem: key});
