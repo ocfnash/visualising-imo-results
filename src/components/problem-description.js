@@ -20,11 +20,10 @@ class ProblemDescription extends Component {
   renderParagraphs() {
     return this.props.problemDescription.map(
       (paragraph, i) => {
-        return (
-          <div className="problem-description-paragraph" key={`problem-paragraph-${i}`}>
-            {paragraph}
-          </div>
-        );
+        return <div
+          className="problem-description-paragraph"
+          dangerouslySetInnerHTML={{__html: paragraph}}
+          key={`problem-paragraph-${i}`} />;
       }
     );
   }
