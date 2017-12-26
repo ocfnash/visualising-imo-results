@@ -16,12 +16,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.selectProblemByKey = this.selectProblemByKey.bind(this);
+    var key = window.location.search.slice(1);
+    if (!problems.hasOwnProperty(key))
+       key = "1997-2";
     this.state = {
-      selectedProblem: "1997-2",
+      selectedProblem: key,
     };
+    this.updateQueryString(key);
+  }
+  updateQueryString(key) {
+    window.history.replaceState({}, null, 'index.html?' + key);
   }
   selectProblemByKey(key) {
     this.setState({selectedProblem: key});
+    this.updateQueryString(key);
   }
   render() {
     return (
